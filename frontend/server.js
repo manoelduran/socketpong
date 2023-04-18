@@ -1,11 +1,15 @@
-const server = require('http').createServer();
-const io = require('socket.io')(server);
+const apiServer = require('../backend/api')
+const httpServer = require('http').createServer(apiServer)
+const sockets = require('./sockets')
+const io = require('socket.io')(httpServer, {
+    cors: {
+      origin: '*',
+      methods: ['GET', 'POST']
+    }
+  });
 
-const PORT = 3000;
+  const PORT = 3005;
+sockets.listen(io)
+httpServer.listen(PORT);
+console.log(`Listening on port ${PORT}...`);
 
-server.listen(PORT)
-console.log('linsting on port 3000')
-
-io.on('connection', (socket) => {
-console.log('a user connected')
-});

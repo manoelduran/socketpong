@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node api.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
